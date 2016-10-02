@@ -15,7 +15,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 
 @Configuration
-@PropertySource(value="file:///Users/uys445/Documents/workspace/prop/application-dev.properties")
+@PropertySource(value="${spring.config.location}")
 @EnableDynamoDBRepositories(basePackages = "com.dynamodemo")
 public class DynamoConfig {
 
