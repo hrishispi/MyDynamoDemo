@@ -10,4 +10,5 @@ import com.dynamodemo.model.Restaurant;
 @EnableScan
 public interface RestaurantRepository extends CrudRepository<Restaurant, String>{
 	public List<Restaurant> findById(@Param("id") String id);
+	public List<Restaurant> findByName(@Param("name") String name);
 }

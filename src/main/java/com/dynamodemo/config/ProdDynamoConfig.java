@@ -13,6 +13,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.sns.AmazonSNSClient;
 
 @Profile("prod")
 @Configuration
@@ -30,6 +31,13 @@ public class ProdDynamoConfig {
             amazonDynamoDB.setEndpoint(amazonDynamoDBEndpoint);
         }
         return amazonDynamoDB;
+    }
+    
+    @Bean
+    public AmazonSNSClient amazonSNSClient() {
+    	AmazonSNSClient amazonSnsClient = new AmazonSNSClient(
+                new InstanceProfileCredentialsProvider());
+        return amazonSnsClient;
     }
 
 }

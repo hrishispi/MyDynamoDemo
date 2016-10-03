@@ -10,8 +10,10 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.sns.AmazonSNSClient;
 
 
 @Configuration
@@ -41,6 +43,13 @@ public class DynamoConfig {
     @Bean
     public AWSCredentials amazonAWSCredentials() {
         return new BasicAWSCredentials(amazonAWSAccessKey, amazonAWSSecretKey);
+    }
+    
+    @Bean
+    public AmazonSNSClient amazonSNSClient() {
+    	AmazonSNSClient amazonSnsClient = new AmazonSNSClient(
+    			amazonAWSCredentials());
+        return amazonSnsClient;
     }
 
 }
