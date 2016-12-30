@@ -40,3 +40,10 @@ Postman-Token: 3b92e2e8-e66f-197c-e0ae-6c3267144a98
 Host: pet-tracker-elb-1088404280.us-east-1.elb.amazonaws.com
 Cache-Control: no-cache
 Postman-Token: 0e0e81af-17cd-e0cf-77e0-e762741057eb
+
+
+scp -i RoamingTailsKey.pem /Users/uys445/Documents/workspace/RDS/MyDynamoDemo/target/MyDynamo-0.0.1-SNAPSHOT.jar ec2-user@ec2-54-90-95-123.compute-1.amazonaws.com:/home/ec2-user
+
+screen -r 8309.pts-0.ip-172-31-54-255
+
+java -jar MyDynamo-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
