@@ -27,7 +27,7 @@ public class PetTracker {
 	private String majorId;
 	
 	private String minorId;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd HH:mm:ss",timezone="America/New_York")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd HH:mm:ss.SSS")
 	private Date dateReported;
 	
 	@DynamoDBRangeKey

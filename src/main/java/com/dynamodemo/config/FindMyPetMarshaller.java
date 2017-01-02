@@ -25,7 +25,7 @@ public class FindMyPetMarshaller implements DynamoDBMarshaller<FindMyPetId>{
 	}
 
 	public static DateFormat getDateFormat() {
-		return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
 	}
 
 }

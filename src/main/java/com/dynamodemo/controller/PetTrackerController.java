@@ -1,12 +1,7 @@
 package com.dynamodemo.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
-
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,11 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.dynamodemo.config.FindMyPetMarshaller;
 import com.dynamodemo.model.FindMyPetId;
 import com.dynamodemo.model.PetTracker;
 import com.dynamodemo.repository.PagablePetTrackerRepo;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class PetTrackerController {
@@ -42,11 +35,7 @@ public class PetTrackerController {
 		JSONObject jsonObject = new JSONObject(petIdObject);
 		String petId = (String) jsonObject.get("petId");
 		petTracker.setPetId(petId);
-		DateFormat dateFormat = FindMyPetMarshaller.getDateFormat();
-		Date date = new Date();
-		dateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
-		String insertDate = dateFormat.format(date); //2016/11/16 12:08:43
-		Date formattedDate = new Date(insertDate);
+		Date formattedDate = new Date();
 		petTracker.setDateReported(formattedDate);
 		FindMyPetId compositeKey = new FindMyPetId();
 		compositeKey.setInsertDate(formattedDate);
